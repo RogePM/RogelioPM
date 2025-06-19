@@ -26,10 +26,6 @@ A personal portfolio website to showcase my projects, skills, and experience.
 - HTML, CSS, JavaScript
 - [Add frameworks/libraries if used, e.g., React, Vue, Bootstrap]
 
-## License
-
-This project is licensed under the MIT License.
-
 ---
 
 Feel free to customize this README for your portfolio!
