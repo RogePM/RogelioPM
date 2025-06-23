@@ -8,415 +8,48 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5;
-            /* Light gray background */
-            color: #333;
-        }
+    <!-- add main.css styles -->
+    <link rel="stylesheet" href="main.css">
+    <!-- link javascript -->
+    <script src="script.js" defer></script>
+    <!-- add logo for webpage -->
+    <link rel="icon" href="robot.png" type="image/png">
 
-        /* Ensure no-scroll class is defined */
-        body.no-scroll {
-            overflow: hidden;
-        }
-
-        /* Section Title Styling with responsive adjustments */
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-            /* Default for mobile (text-3xl) */
-            font-weight: 700;
-            /* font-bold */
-            color: #2c3e50;
-            /* Darker blue-gray */
-        }
-
-        @media (min-width: 640px) {
-
-            /* sm breakpoint */
-            .section-title {
-                font-size: 2.25rem;
-                /* text-4xl */
-            }
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 60%;
-            height: 4px;
-            background-color: #3498db;
-            /* Blue accent */
-            border-radius: 2px;
-        }
-
-        /* Card Styling */
-        .card {
-            background-color: #ffffff;
-            border-radius: 12px;
-            /* Rounded corners */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            /* Soft shadow */
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            /* Lift effect on hover */
-        }
-
-        .skill-category-title {
-            color: #34495e;
-            /* Slightly lighter dark blue-gray */
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        /* Skill Item Badges */
-        .skill-item {
-            background-color: #ecf0f1;
-            /* Light gray for tags */
-            color: #555;
-            padding: 0.35rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.875rem;
-            /* text-sm */
-            white-space: nowrap;
-            /* Prevents breaking within a tag */
-        }
-
-        /* Project/Social Links */
-        .project-link,
-        .social-link {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
-        }
-
-        .project-link:hover,
-        .social-link:hover {
-            color: #2980b9;
-            transform: scale(1.05);
-            /* Subtle scale on hover */
-        }
-
-        /* Header Background */
-        .header-bg {
-            background-image: linear-gradient(to right, #3498db, #2c3e50);
-            /* Gradient header */
-        }
-
-        /* Profile Picture Container */
-        .profile-pic-container {
-            width: 120px;
-            /* Smaller default for mobile */
-            height: 120px;
-            margin: 0 auto 1rem auto;
-            /* Center and add margin below */
-            border-radius: 50%;
-            /* Circular */
-            overflow: hidden;
-            border: 4px solid white;
-            /* White border */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            /* Soft shadow for depth */
-        }
-
-        @media (min-width: 640px) {
-
-            /* sm breakpoint */
-            .profile-pic-container {
-                width: 160px;
-                /* Larger size for tablets/desktops */
-                height: 160px;
-                margin-bottom: 1.5rem;
-            }
-        }
-
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* Ensures image covers the container without distortion */
-        }
-
-        /* Loading Spinner */
-        .loading-spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: #3498db;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-            display: none;
-            /* Hidden by default */
-            margin: 1rem auto;
-            /* Centered */
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Expanded Description Styling */
-        .expanded-description strong {
-            color: #2c3e50;
-            /* Make section titles more prominent */
-            display: block;
-            /* Ensures they act as block elements */
-            margin-top: 1rem;
-            /* Space above each section title */
-            margin-bottom: 0.5rem;
-            /* Space below each section title */
-            font-size: 1.05rem;
-            /* Slightly larger font for headings */
-        }
-
-        @media (min-width: 640px) {
-            .expanded-description strong {
-                font-size: 1.15rem;
-            }
-        }
-
-        .expanded-description p {
-            margin-bottom: 0.75rem;
-            /* Space between paragraphs in expanded view */
-            font-size: 0.95rem;
-            /* Slightly smaller for density */
-            line-height: 1.5;
-            /* Good line height for readability */
-        }
-
-        /* Navbar Styling */
-        .navbar {
-            background-color: #ffffff;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            padding-top: 0.75rem;
-            /* py-3 */
-            padding-bottom: 0.75rem;
-            /* py-3 */
-            padding-left: 1rem;
-            /* px-4 */
-            padding-right: 1rem;
-            /* px-4 */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            /* Allows items to wrap on smaller screens */
-            gap: 0.5rem;
-            /* Gap between items when wrapped */
-        }
-
-        @media (min-width: 640px) {
-
-            /* sm breakpoint */
-            .navbar {
-                padding-left: 1.5rem;
-                /* sm:px-6 */
-                padding-right: 1.5rem;
-                /* sm:px-6 */
-                justify-content: center;
-                /* Center nav links on larger screens */
-            }
-
-            .navbar>a {
-                /* Target R.P.M. logo specifically */
-                margin-right: auto;
-                /* Push R.P.M. to left */
-                padding-left: 0;
-                /* Remove internal padding if flex item */
-            }
-        }
-
-        @media (min-width: 1024px) {
-
-            /* lg breakpoint */
-            .navbar {
-                padding-left: 2rem;
-                /* lg:px-8 */
-                padding-right: 2rem;
-                /* lg:px-8 */
-            }
-        }
-
-        /* Mobile Navigation Overlay - modern styling */
-        #mobile-nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(255, 255, 255, 0.85);
-            /* Semi-transparent for blur effect */
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            z-index: 50;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding-top: 0;
-            /* No extra padding, center content */
-            transform: translateX(-100%);
-            opacity: 0;
-            pointer-events: none;
-            transition:
-                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        #mobile-nav-overlay.translate-x-0 {
-            transform: translateX(0);
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        #mobile-nav-overlay .navbar-link {
-            font-size: 2rem;
-            padding: 1.25rem 0;
-            width: 100vw;
-            text-align: center;
-            color: #2c3e50;
-            background: none;
-            border-bottom: 1px solid #e5e7eb;
-            transition: background 0.2s, color 0.2s;
-        }
-
-        #mobile-nav-overlay .navbar-link:last-child {
-            border-bottom: none;
-        }
-
-        #mobile-nav-overlay .navbar-link:hover {
-            background: #f0f2f5;
-            color: #3498db;
-        }
-
-        /* Hamburger toggle button - ensure it's on top of overlay */
-        #mobile-nav-toggle {
-            z-index: 51;
-            position: relative;
-        }
-
-        /* Animations */
-        @keyframes fadeSlideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in-up {
-            animation: fadeSlideInUp 0.8s ease-out forwards;
-        }
-
-        .delay-100 {
-            animation-delay: 0.1s;
-        }
-
-        .delay-200 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-300 {
-            animation-delay: 0.3s;
-        }
-
-        .delay-400 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-500 {
-            animation-delay: 0.5s;
-        }
-
-        .delay-600 {
-            animation-delay: 0.6s;
-        }
-
-        .delay-700 {
-            animation-delay: 0.7s;
-        }
-
-        /* Scroll to top button */
-        #scrollTopButton {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #3498db;
-            color: white;
-            border-radius: 50%;
-            width: 45px;
-            /* Slightly smaller for mobile */
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-            cursor: pointer;
-            z-index: 999;
-        }
-
-        @media (min-width: 640px) {
-            #scrollTopButton {
-                width: 50px;
-                height: 50px;
-            }
-        }
-
-        #scrollTopButton.show {
-            opacity: 1;
-            visibility: visible;
-        }
-    </style>
 </head>
 
 <body class="antialiased">
     <!-- Navigation Bar -->
-    <nav class="navbar fixed top-0 w-full py-3 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+    <nav class="navbar fixed top-0 w-full py-2 px-4 sm:px-6 lg:px-8">
         <!-- Logo/Home Link -->
         <a href="#top"
             class="text-xl font-bold text-blue-700 hover:text-blue-900 transition-colors flex items-center flex-shrink-0"
             onclick="scrollToTop(); closeMobileNav()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-rocket mr-2">
-                <path
-                    d="M4.5 16.5c-1.5 1.26-2 5-2 5V21c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-1.5c0 0 0-2 2-3.5L12 15l-3-3 5-5c1.5-1.5 2-2 3.5-2H21c.55 0 1 .45 1 1v2c0 .55-.45 1-1 1h-1.5c0 0-3.5.5-5 2z" />
-                <path d="M9 18v3" />
-                <path d="M15 18v3" />
-            </svg>
+            <!-- Logo Icon -->
+            <img src="robot.png" alt="Logo" class="h-8 w-8 mr-2 rounded-full shadow-md" />
             R.P.M.
-        </a>
+        </a><!-- Centered Nav Links -->
+        <div class="hidden md:flex flex-grow justify-center items-center space-x-8">
+            <a href="#about" class="navbar-link" data-lang-en="About" data-lang-fr="À Propos">About</a>
+            <a href="#skills" class="navbar-link" data-lang-en="Skills" data-lang-fr="Compétences">Skills</a>
+            <a href="#projects" class="navbar-link" data-lang-en="Projects" data-lang-fr="Projets">Projects</a>
+            <a href="#experience" class="navbar-link" data-lang-en="Experience" data-lang-fr="Expérience">Experience</a>
+            <a href="#contact" class="navbar-link" data-lang-en="Contact" data-lang-fr="Contact">Contact</a>
+        </div>
+
+        <!-- Language Selector -->
+        <div id="lang-container" class="hidden md:flex items-center flex-shrink-0">
+            <button id="lang-en-btn" class="lang-btn">EN</button>
+            <div class="border-l h-4 border-gray-300 mx-2"></div>
+            <button id="lang-fr-btn" class="lang-btn">FR</button>
+        </div>
 
         <!-- Hamburger Menu Icon (Mobile Only) -->
         <button id="mobile-nav-toggle"
-            class="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 z-51">
+            class="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 z-51 ml-2">
             <svg id="hamburger-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -424,26 +57,26 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
-
-        <!-- Mobile Navigation Overlay -->
-        <div id="mobile-nav-overlay"
-            class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center space-y-8 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
-            <a href="#about" class="navbar-link text-2xl py-4" onclick="closeMobileNav()">About</a>
-            <a href="#skills" class="navbar-link text-2xl py-4" onclick="closeMobileNav()">Skills</a>
-            <a href="#projects" class="navbar-link text-2xl py-4" onclick="closeMobileNav()">Projects</a>
-            <a href="#experience" class="navbar-link text-2xl py-4" onclick="closeMobileNav()">Experience</a>
-            <a href="#contact" class="navbar-link text-2xl py-4" onclick="closeMobileNav()">Contact</a>
-        </div>
-
-        <!-- Desktop Navigation Links -->
-        <div class="hidden md:flex space-x-4 lg:space-x-8">
-            <a href="#about" class="navbar-link">About</a>
-            <a href="#skills" class="navbar-link">Skills</a>
-            <a href="#projects" class="navbar-link">Projects</a>
-            <a href="#experience" class="navbar-link">Experience</a>
-            <a href="#contact" class="navbar-link">Contact</a>
-        </div>
     </nav>
+
+    <div id="mobile-nav-overlay"
+        class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center space-y-8 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <a href="#about" class="navbar-link text-2xl py-4" onclick="closeMobileNav()" data-lang-en="About"
+            data-lang-fr="À Propos">About</a>
+        <a href="#skills" class="navbar-link text-2xl py-4" onclick="closeMobileNav()" data-lang-en="Skills"
+            data-lang-fr="Compétences">Skills</a>
+        <a href="#projects" class="navbar-link text-2xl py-4" onclick="closeMobileNav()" data-lang-en="Projects"
+            data-lang-fr="Projets">Projects</a>
+        <a href="#experience" class="navbar-link text-2xl py-4" onclick="closeMobileNav()" data-lang-en="Experience"
+            data-lang-fr="Expérience">Experience</a>
+        <a href="#contact" class="navbar-link text-2xl py-4" onclick="closeMobileNav()" data-lang-en="Contact"
+            data-lang-fr="Contact">Contact</a>
+        <div id="mobile-lang-container" class="flex items-center pt-8">
+            <button id="mobile-lang-en-btn" class="lang-btn">EN</button>
+            <div class="border-l h-4 border-gray-300 mx-2"></div>
+            <button id="mobile-lang-fr-btn" class="lang-btn">FR</button>
+        </div>
+    </div>
 
     <!-- Header/Hero Section -->
     <header id="top" class="header-bg text-white py-16 px-4 sm:px-6 lg:px-8 shadow-lg pt-28 sm:pt-40">
@@ -551,53 +184,56 @@
     <main class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <!-- About Section -->
         <section id="about" class="mb-16">
-            <h2 class="section-title">About Me</h2>
-            <div class="card">
-                <p class="text-lg leading-relaxed mb-4">
-                    I’m a software engineer and cybersecurity specialist with dual Bachelor’s degrees, proven research
-                    in digital transformation for non-profits, and a drive to build secure, scalable solutions that
-                    empower communities.
-                </p>
-                <ul class="list-disc list-inside text-lg leading-relaxed space-y-2 pl-4">
-                    <li>
-                        <strong>First-Gen Background & Motivation:</strong> As a first-generation student from Mexico,
-                        my ambition extends beyond personal achievement; I aim to leverage advanced software engineering
-                        principles to architect solutions that deliver tangible impact at scale, with a long-term dream
-                        of earning a doctorate and contributing meaningfully to the global tech landscape.
-                    </li>
-                    <li>
-                        <strong>Dual BS, Honors Thesis, Research Focus:</strong> My academic journey, culminating in
-                        dual Bachelor of Science degrees in Computing Technology and Information Systems, and Cyber and
-                        Network Security, has equipped me with a robust foundation in algorithmic thinking, systems
-                        design, and secure software development. My honors thesis, "Enhancing Food Bank Efficiency: A
-                        Web-Based Solution for Real-Time Inventory Management and Distribution Optimization,"
-                        exemplifies my commitment to digitizing legacy workflows for non-profit organizations.
-                    </li>
-                    <li>
-                        <strong>Technical Strengths:</strong> This project, along with others, honed my proficiency in
-                        modern MERN stack development, service-oriented computing, workflow automation, and real-time
-                        data synchronization. I am deeply inspired by the rapid proliferation of AI-driven and
-                        cloud-native technologies, constantly exploring how intelligent systems and distributed
-                        architectures can revolutionize business operations.
-                    </li>
-                    <li>
-                        <strong>Passion for Ethical, Impactful Tech:</strong> My particular interest lies in empirical
-                        software engineering—using data-driven methodologies to optimize codebases, automate testing,
-                        and enhance system reliability. I thrive on the challenge of scaling applications from MVPs to
-                        enterprise-grade solutions while ensuring data integrity and end-to-end security. Beyond
-                        technical excellence, I am profoundly passionate about the ethical deployment of technology,
-                        including the development of green computing solutions and the implementation of
-                        privacy-preserving protocols to safeguard sensitive information. My aspiration is to create
-                        software that impacts millions of users, revolutionizes our world, and contributes to a more
-                        secure and sustainable digital future.
-                    </li>
-                </ul>
+            <h2 class="section-title" data-lang-en="About Me" data-lang-fr="À Propos de Moi">About Me</h2>
+            <div class="card p-6 md:p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 text-gray-700">
+                    <div>
+                        <h4 class="font-semibold text-lg text-blue-800 mb-2" data-lang-en="My Mission & Motivation"
+                            data-lang-fr="Ma Mission et Motivation">My Mission & Motivation</h4>
+                        <p class="leading-relaxed">As a <span class="highlight">first-generation</span> student from
+                            Mexico, I aim to leverage advanced software engineering to <span class="highlight">architect
+                                solutions</span> that deliver tangible impact at scale, with a long-term dream of
+                            earning a doctorate and contributing meaningfully to the global tech landscape.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-blue-800 mb-2"
+                            data-lang-en="Academic & Research Background"
+                            data-lang-fr="Parcours Académique et de Recherche">Academic & Research Background</h4>
+                        <p class="leading-relaxed">My <span class="highlight">dual BS degrees</span> in Computing
+                            Technology, Information Systems, and Cybersecurity have equipped me with a robust foundation
+                            in <span class="highlight">systems design</span> and <span class="highlight">secure software
+                                development</span>. My honors thesis exemplifies my commitment to digitizing legacy
+                            workflows for non-profit organizations.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-blue-800 mb-2" data-lang-en="Technical Strengths"
+                            data-lang-fr="Forces Techniques">Technical Strengths</h4>
+                        <p class="leading-relaxed">My projects have honed my proficiency in modern <span
+                                class="highlight">MERN stack development</span>, <span
+                                class="highlight">service-oriented computing</span>, workflow automation, and real-time
+                            data synchronization. I am deeply inspired by AI-driven and <span
+                                class="highlight">cloud-native technologies</span>, constantly exploring how they can
+                            revolutionize operations.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-blue-800 mb-2"
+                            data-lang-en="Passion for Ethical, Impactful Tech"
+                            data-lang-fr="Passion pour la Technologie Éthique et Impactante">Passion for Ethical,
+                            Impactful Tech</h4>
+                        <p class="leading-relaxed">I am passionate about the ethical deployment of technology and have a
+                            keen interest in <span class="highlight">Empirical Software Engineering</span>, <span
+                                class="highlight">software evolution</span>, and the <span class="highlight">deployment
+                                and security of large-scale software</span> systems. My goal is to use data-driven
+                            methodologies to enhance system reliability and contribute to a more secure and sustainable
+                            digital future.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Skills Section -->
         <section id="skills" class="mb-16">
-            <h2 class="section-title">Skills</h2>
+            <h2 class="section-title" data-lang-en="Skills" data-lang-fr="Compétences">Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="card">
                     <h3 class="skill-category-title text-xl mb-4 flex items-center">
@@ -607,7 +243,8 @@
                             <polyline points="16 18 22 12 16 6" />
                             <polyline points="8 6 2 12 8 18" />
                         </svg>
-                        Programming & Scripting
+                        <span data-lang-en="Programming & Scripting"
+                            data-lang-fr="Programmation et Scripting">Programming & Scripting</span>
                     </h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="skill-item">C</span>
@@ -629,7 +266,8 @@
                                 d="M17.5 19H19a2 2 0 0 0 2-2V8.5a2.5 2.5 0 0 0-2.5-2.5h-7A2.5 2.5 0 0 0 7 8.5V17a2 2 0 0 0 2 2h.5" />
                             <path d="M12 12H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h1.5" />
                         </svg>
-                        Full-Stack & Cloud
+                        <span data-lang-en="Full-Stack & Cloud" data-lang-fr="Full-Stack et Cloud">Full-Stack &
+                            Cloud</span>
                     </h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="skill-item">MongoDB</span>
@@ -649,7 +287,8 @@
                             class="lucide lucide-shield mr-2">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                         </svg>
-                        Security & Systems
+                        <span data-lang-en="Security & Systems" data-lang-fr="Sécurité et Systèmes">Security &
+                            Systems</span>
                     </h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="skill-item">Kali Linux</span>
@@ -672,7 +311,7 @@
                             <path d="m11.5 6.5-4.5 4.5" />
                             <path d="M18 10l-1.5-1.5" />
                         </svg>
-                        Tools & Data
+                        <span data-lang-en="Tools & Data" data-lang-fr="Outils et Données">Tools & Data</span>
                     </h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="skill-item">Git</span>
@@ -688,45 +327,51 @@
             </div>
 
             <div class="card mt-8">
-                <h3 class="skill-category-title text-xl mb-4">Top Skills for Recruiters</h3>
+                <h3 class="skill-category-title text-xl mb-4" data-lang-en="Top Skills for Recruiters"
+                    data-lang-fr="Compétences Clés pour les Recruteurs">Top Skills for Recruiters</h3>
                 <div class="flex flex-wrap gap-2">
-                    <!-- Please tell me your top 5 skills, and I will place them here. Example: -->
-                    <!-- <span class="skill-item bg-blue-100 text-blue-800">React</span>
-                    <span class="skill-item bg-blue-100 text-blue-800">Python</span>
-                    <span class="skill-item bg-blue-100 text-blue-800">Cybersecurity Architecture</span>
-                    <span class="skill-item bg-blue-100 text-blue-800">Cloud Computing (AWS/Azure)</span>
-                    <span class="skill-item bg-blue-100 text-blue-800">Database Design</span> -->
-                    <span class="skill-item bg-blue-100 text-blue-800">Full-Stack Development</span>
-                    <span class="skill-item bg-blue-100 text-blue-800">Cybersecurity</span>
-                    <span class="skill-item bg-blue-100 text-blue-800">Network Security</span>
-                    <span class="skill-item bg-blue-100 text-blue-800">System Design</span>
-                    <span class="skill-item bg-blue-100 text-blue-800">Project Leadership</span>
+                    <span class="skill-item bg-blue-100 text-blue-800" data-lang-en="Full-Stack Development"
+                        data-lang-fr="Développement Full-Stack">Full-Stack Development</span>
+                    <span class="skill-item bg-blue-100 text-blue-800" data-lang-en="Cybersecurity"
+                        data-lang-fr="Cybersécurité">Cybersecurity</span>
+                    <span class="skill-item bg-blue-100 text-blue-800" data-lang-en="Network Security"
+                        data-lang-fr="Sécurité Réseau">Network Security</span>
+                    <span class="skill-item bg-blue-100 text-blue-800" data-lang-en="System Design"
+                        data-lang-fr="Conception de Systèmes">System Design</span>
+                    <span class="skill-item bg-blue-100 text-blue-800" data-lang-en="Project Leadership"
+                        data-lang-fr="Direction de Projet">Project Leadership</span>
                 </div>
             </div>
 
             <div class="card mt-8">
-                <h3 class="skill-category-title text-xl mb-4">Currently Learning / Favorite Tools</h3>
+                <h3 class="skill-category-title text-xl mb-4" data-lang-en="Currently Learning / Favorite Tools"
+                    data-lang-fr="Apprentissage Actuel / Outils Favoris">Currently Learning / Favorite Tools</h3>
                 <div class="flex flex-wrap gap-2">
-                    <!-- Please provide 2-3 items for this section. Example: -->
-                    <!-- <span class="skill-item bg-green-100 text-green-800">GoLang</span>
-                    <span class="skill-item bg-green-100 text-green-800">Docker Compose</span>
-                    <span class="skill-item bg-green-100 text-green-800">AI/MLOps</span> -->
-                    <span class="skill-item bg-green-100 text-green-800">Advanced React Patterns</span>
-                    <span class="skill-item bg-green-100 text-green-800">Serverless Architectures</span>
-                    <span class="skill-item bg-green-100 text-green-800">Threat Modeling</span>
+                    <span class="skill-item bg-green-100 text-green-800" data-lang-en="Advanced React Patterns"
+                        data-lang-fr="Patrons React Avancés">Advanced React Patterns</span>
+                    <span class="skill-item bg-green-100 text-green-800" data-lang-en="Serverless Architectures"
+                        data-lang-fr="Architectures Serverless">Serverless Architectures</span>
+                    <span class="skill-item bg-green-100 text-green-800" data-lang-en="Threat Modeling"
+                        data-lang-fr="Modélisation des Menaces">Threat Modeling</span>
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section id="projects" class="mb-16">
-            <h2 class="section-title">Selected Projects</h2>
+            <h2 class="section-title" data-lang-en="Selected Projects" data-lang-fr="Projets Sélectionnés">Selected
+                Projects</h2>
 
             <div class="card" id="project-thesis">
-                <h3 class="text-2xl font-semibold mb-2">Honors Thesis: Enhancing Food Bank Efficiency</h3>
-                <p class="text-gray-700 mb-2 text-md">Spring 2025</p>
+                <h3 class="text-2xl font-semibold mb-2" data-lang-en="Honors Thesis: Enhancing Food Bank Efficiency"
+                    data-lang-fr="Thèse de Spécialisation : Amélioration de l'Efficacité des Banques Alimentaires">
+                    Honors Thesis: Enhancing Food Bank Efficiency</h3>
+                <p class="text-gray-700 mb-2 text-md" data-lang-en="Spring 2025" data-lang-fr="Printemps 2025">Spring
+                    2025</p>
                 <p class="text-md leading-relaxed mb-4"
-                    data-original-description="Led the design and full-stack development of a web-based application (MERN stack) to enable food banks to migrate from paper-based inventory to a digital ecosystem, significantly improving operational efficiency and data accessibility (e.g., 'by 40%'). This project demonstrated proficiency in service-oriented computing, workflow automation, and real-time data synchronization.">
+                    data-original-description="Led the design and full-stack development of a web-based application (MERN stack) to enable food banks to migrate from paper-based inventory to a digital ecosystem, significantly improving operational efficiency and data accessibility (e.g., 'by 40%'). This project demonstrated proficiency in service-oriented computing, workflow automation, and real-time data synchronization."
+                    data-lang-en="Led the design and full-stack development of a web-based application (MERN stack) to enable food banks to migrate from paper-based inventory to a digital ecosystem, significantly improving operational efficiency and data accessibility."
+                    data-lang-fr="A mené la conception et le développement full-stack d'une application (stack MERN) pour permettre aux banques alimentaires de passer d'un inventaire papier à un écosystème numérique, améliorant considérablement l'efficacité opérationnelle et l'accessibilité des données.">
                     Led the design and full-stack development of a web-based application (MERN stack) to
                     enable food banks to migrate from paper-based inventory to a digital ecosystem,
                     significantly improving operational efficiency and data accessibility.
@@ -737,19 +382,23 @@
                     <span class="skill-item bg-gray-200">Express.js</span>
                     <span class="skill-item bg-gray-200">React</span>
                     <span class="skill-item bg-gray-200">Node.js</span>
-                    <span class="skill-item bg-gray-200">Service-Oriented Computing</span>
-                    <span class="skill-item bg-gray-200">Workflow Automation</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Service-Oriented Computing"
+                        data-lang-fr="Informatique Orientée Services">Service-Oriented Computing</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Workflow Automation"
+                        data-lang-fr="Automatisation des Tâches">Workflow Automation</span>
                 </div>
                 <a href="https://www.jstor.org/stable/community.39461566" class="project-link mt-2 block"
                     target="_blank" rel="noopener noreferrer">
-                    View Published Paper (Jstor) &rarr;
+                    <span data-lang-en="View Published Paper (Jstor)" data-lang-fr="Voir l'Article Publié (Jstor)">View
+                        Published Paper (Jstor)</span> &rarr;
                 </a>
                 <a href="#" class="project-link mt-2 block" target="_blank" rel="noopener noreferrer">
-                    View Live Demo (Coming Soon!) &rarr;
+                    <span data-lang-en="View Live Demo (Coming Soon!)"
+                        data-lang-fr="Voir la Démo (Bientôt disponible !)">View Live Demo (Coming Soon!)</span> &rarr;
                 </a>
                 <button onclick="expandProjectDescription(this, 'project-thesis')"
                     class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
-                    ✨ Expand Description
+                    <span data-lang-en="✨ Expand Description" data-lang-fr="✨ Voir Plus">✨ Expand Description</span>
                 </button>
                 <div id="project-thesis-loading" class="loading-spinner mx-auto mt-4"></div>
                 <div id="project-thesis-expanded-content"
@@ -757,10 +406,13 @@
             </div>
 
             <div class="card" id="project-airbnb">
-                <h3 class="text-2xl font-semibold mb-2">Java-Based Airbnb Clone</h3>
-                <p class="text-gray-700 mb-2 text-md">Fall 2023</p>
+                <h3 class="text-2xl font-semibold mb-2" data-lang-en="Java-Based Airbnb Clone"
+                    data-lang-fr="Clone d'Airbnb en Java">Java-Based Airbnb Clone</h3>
+                <p class="text-gray-700 mb-2 text-md" data-lang-en="Fall 2023" data-lang-fr="Automne 2023">Fall 2023</p>
                 <p class="text-md leading-relaxed mb-4"
-                    data-original-description="Developed a full-stack Java application with two teammates, implementing robust JWT-based user authentication and fine-grained role-based access control. Designed intuitive filtering interfaces and property management systems for over 200 simulated property listings, demonstrating strong backend development and secure application design. (Quantify impact e.g., 'Enhanced user experience by X%' or 'Streamlined data retrieval by Y%').">
+                    data-original-description="Developed a full-stack Java application with two teammates, implementing robust JWT-based user authentication and fine-grained role-based access control. Designed intuitive filtering interfaces and property management systems for over 200 simulated property listings, demonstrating strong backend development and secure application design. (Quantify impact e.g., 'Enhanced user experience by X%' or 'Streamlined data retrieval by Y%')."
+                    data-lang-en="Developed a full-stack Java application with two teammates, implementing robust JWT-based user authentication and fine-grained role-based access control. Designed intuitive filtering interfaces and property management systems for over 200 simulated property listings."
+                    data-lang-fr="A développé une application Java full-stack avec deux coéquipiers, implémentant une authentification utilisateur robuste basée sur JWT et un contrôle d'accès basé sur les rôles. A conçu des interfaces de filtrage intuitives et des systèmes de gestion immobilière pour plus de 200 annonces simulées.">
                     Developed a full-stack Java application with two teammates, implementing robust JWT-based user
                     authentication and fine-grained role-based access control. Designed intuitive filtering
                     interfaces and property management systems for over 200 simulated property listings.
@@ -768,15 +420,16 @@
                 <div class="flex flex-wrap gap-2 mb-4">
                     <span class="skill-item bg-gray-200">Java</span>
                     <span class="skill-item bg-gray-200">JWT</span>
-                    <span class="skill-item bg-gray-200">Role-Based Access Control</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Role-Based Access Control"
+                        data-lang-fr="Contrôle d'Accès Basé sur les Rôles">Role-Based Access Control</span>
                 </div>
                 <a href="https://github.com/AxelSandovalllll/finalprojecthouselist/tree/master" target="_blank"
                     rel="noopener noreferrer" class="project-link mt-2 block">
-                    View GitHub &rarr;
+                    <span data-lang-en="View GitHub" data-lang-fr="Voir sur GitHub">View GitHub</span> &rarr;
                 </a>
                 <button onclick="expandProjectDescription(this, 'project-airbnb')"
                     class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
-                    ✨ Expand Description
+                    <span data-lang-en="✨ Expand Description" data-lang-fr="✨ Voir Plus">✨ Expand Description</span>
                 </button>
                 <div id="project-airbnb-loading" class="loading-spinner mx-auto mt-4"></div>
                 <div id="project-airbnb-expanded-content"
@@ -784,28 +437,39 @@
             </div>
 
             <div class="card" id="project-system-analysis">
-                <h3 class="text-2xl font-semibold mb-2">System Analysis & Design for MedTechSoft</h3>
-                <p class="text-gray-700 mb-2 text-md">December 2023</p>
+                <h3 class="text-2xl font-semibold mb-2" data-lang-en="System Analysis & Design for MedTechSoft"
+                    data-lang-fr="Analyse et Conception de Système pour MedTechSoft">System Analysis & Design for
+                    MedTechSoft</h3>
+                <p class="text-gray-700 mb-2 text-md" data-lang-en="December 2023" data-lang-fr="Décembre 2023">December
+                    2023</p>
                 <p class="text-md leading-relaxed mb-4"
-                    data-original-description="Conducted a comprehensive system analysis for a mock real-world company (MedTechSoft) focusing on communication and employee evaluation systems. This involved developing activity diagrams, entity-relationship models, user stories, prototypes, and a detailed feasibility analysis, demonstrating expertise in system design, requirements gathering, and the software development lifecycle. (Quantify impact, e.g., 'Identified optimizations leading to X% potential efficiency gain').">
+                    data-original-description="Conducted a comprehensive system analysis for a mock real-world company (MedTechSoft) focusing on communication and employee evaluation systems. This involved developing activity diagrams, entity-relationship models, user stories, prototypes, and a detailed feasibility analysis, demonstrating expertise in system design, requirements gathering, and the software development lifecycle. (Quantify impact, e.g., 'Identified optimizations leading to X% potential efficiency gain')."
+                    data-lang-en="Conducted a comprehensive system analysis for a mock real-world company (MedTechSoft) focusing on communication and employee evaluation systems. This involved developing activity diagrams, entity-relationship models, user stories, prototypes, and a detailed feasibility analysis."
+                    data-lang-fr="A mené une analyse de système complète pour une entreprise fictive (MedTechSoft) axée sur les systèmes de communication et d'évaluation des employés. Cela comprenait le développement de diagrammes d'activité, de modèles entité-relation, de récits utilisateur, de prototypes et d'une analyse de faisabilité détaillée.">
                     Conducted a comprehensive system analysis for a mock real-world company (MedTechSoft) focusing on
                     communication and employee evaluation systems. This involved developing activity diagrams,
                     entity-relationship models, user stories, prototypes, and a detailed feasibility analysis.
                 </p>
                 <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="skill-item bg-gray-200">System Design</span>
-                    <span class="skill-item bg-gray-200">UML (Activity, ER Diagrams)</span>
-                    <span class="skill-item bg-gray-200">User Stories</span>
-                    <span class="skill-item bg-gray-200">Feasibility Analysis</span>
-                    <span class="skill-item bg-gray-200">UI/UX Prototyping (Figma)</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="System Design"
+                        data-lang-fr="Conception de Systèmes">System Design</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="UML (Activity, ER Diagrams)"
+                        data-lang-fr="UML (Diagrammes d'Activité, ER)">UML (Activity, ER Diagrams)</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="User Stories"
+                        data-lang-fr="Récits Utilisateur">User Stories</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Feasibility Analysis"
+                        data-lang-fr="Analyse de Faisabilité">Feasibility Analysis</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="UI/UX Prototyping (Figma)"
+                        data-lang-fr="Prototypage UI/UX (Figma)">UI/UX Prototyping (Figma)</span>
                 </div>
                 <a href="pdfs/Mock_Real_World_Company_System_Analysis.pdf" target="_blank" rel="noopener noreferrer"
                     class="project-link mt-2 block">
-                    View Full Report (PDF) &rarr;
+                    <span data-lang-en="View Full Report (PDF)" data-lang-fr="Voir le Rapport Complet (PDF)">View Full
+                        Report (PDF)</span> &rarr;
                 </a>
                 <button onclick="expandProjectDescription(this, 'project-system-analysis')"
                     class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
-                    ✨ Expand Description
+                    <span data-lang-en="✨ Expand Description" data-lang-fr="✨ Voir Plus">✨ Expand Description</span>
                 </button>
                 <div id="project-system-analysis-loading" class="loading-spinner mx-auto mt-4"></div>
                 <div id="project-system-analysis-expanded-content"
@@ -813,10 +477,15 @@
             </div>
 
             <div class="card" id="project-lab">
-                <h3 class="text-2xl font-semibold mb-2">Secure Computer Lab & Server Environment</h3>
-                <p class="text-gray-700 mb-2 text-md">Spring 2024</p>
+                <h3 class="text-2xl font-semibold mb-2" data-lang-en="Secure Computer Lab & Server Environment"
+                    data-lang-fr="Environnement de Laboratoire et de Serveur Sécurisé">Secure Computer Lab & Server
+                    Environment</h3>
+                <p class="text-gray-700 mb-2 text-md" data-lang-en="Spring 2024" data-lang-fr="Printemps 2024">Spring
+                    2024</p>
                 <p class="text-md leading-relaxed mb-4"
-                    data-original-description="Led a 3-person team in transforming an academic lab into an advanced, secure virtualized computing environment. This involved comprehensive hardware cleanup, server setup, and deploying Proxmox with Kubernetes for efficient resource management and high availability, providing secure platforms for cybersecurity education. Improved compute resource allocation by 25%.">
+                    data-original-description="Led a 3-person team in transforming an academic lab into an advanced, secure virtualized computing environment. This involved comprehensive hardware cleanup, server setup, and deploying Proxmox with Kubernetes for efficient resource management and high availability, providing secure platforms for cybersecurity education. Improved compute resource allocation by 25%."
+                    data-lang-en="Led a 3-person team in transforming an academic lab into an advanced, secure virtualized computing environment. This involved comprehensive hardware cleanup, server setup, and deploying Proxmox with Kubernetes for efficient resource management and high availability, providing secure platforms for cybersecurity education."
+                    data-lang-fr="A dirigé une équipe de 3 personnes dans la transformation d'un laboratoire universitaire en un environnement informatique virtualisé avancé et sécurisé. Cela impliquait le nettoyage complet du matériel, la configuration du serveur et le déploiement de Proxmox avec Kubernetes pour une gestion efficace des ressources.">
                     Led a 3-person team in transforming an academic lab into an advanced, secure virtualized computing
                     environment. This involved comprehensive hardware cleanup, server setup, and deploying Proxmox with
                     Kubernetes for efficient resource management and high availability, providing secure platforms for
@@ -825,17 +494,20 @@
                 <div class="flex flex-wrap gap-2 mb-4">
                     <span class="skill-item bg-gray-200">Proxmox</span>
                     <span class="skill-item bg-gray-200">Kubernetes</span>
-                    <span class="skill-item bg-gray-200">Virtualization</span>
-                    <span class="skill-item bg-gray-200">Firewalls</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Virtualization"
+                        data-lang-fr="Virtualisation">Virtualization</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Firewalls"
+                        data-lang-fr="Pare-feux">Firewalls</span>
                     <span class="skill-item bg-gray-200">Linux (Kali, Mint)</span>
                 </div>
                 <a href="pdfs/Advanced Configuration of the CTIS_CNS Lab and Server Room.pdf" target="_blank"
                     rel="noopener noreferrer" class="project-link mt-2 block">
-                    View Full Report (PDF) &rarr;
+                    <span data-lang-en="View Full Report (PDF)" data-lang-fr="Voir le Rapport Complet (PDF)">View Full
+                        Report (PDF)</span> &rarr;
                 </a>
                 <button onclick="expandProjectDescription(this, 'project-lab')"
                     class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
-                    ✨ Expand Description
+                    <span data-lang-en="✨ Expand Description" data-lang-fr="✨ Voir Plus">✨ Expand Description</span>
                 </button>
                 <div id="project-lab-loading" class="loading-spinner mx-auto mt-4"></div>
                 <div id="project-lab-expanded-content"
@@ -843,10 +515,14 @@
             </div>
 
             <div class="card" id="project-azure-siem">
-                <h3 class="text-2xl font-semibold mb-2">Azure SIEM with Live Map Integration</h3>
-                <p class="text-gray-700 mb-2 text-md">April 2023</p>
+                <h3 class="text-2xl font-semibold mb-2" data-lang-en="Azure SIEM with Live Map Integration"
+                    data-lang-fr="SIEM Azure avec Intégration de Carte en Direct">Azure SIEM with Live Map Integration
+                </h3>
+                <p class="text-gray-700 mb-2 text-md" data-lang-en="April 2023" data-lang-fr="Avril 2023">April 2023</p>
                 <p class="text-md leading-relaxed mb-4"
-                    data-original-description="Designed and implemented an Azure-based Security Information and Event Management (SIEM) solution with live map integration. This project involved configuring Azure Virtual Machines to collect security logs, refining data with PowerShell, and visualizing global login attempts for real-time threat detection and analysis, enhancing proactive security posture. (Quantify impact e.g., 'Improved threat detection speed by X%').">
+                    data-original-description="Designed and implemented an Azure-based Security Information and Event Management (SIEM) solution with live map integration. This project involved configuring Azure Virtual Machines to collect security logs, refining data with PowerShell, and visualizing global login attempts for real-time threat detection and analysis, enhancing proactive security posture. (Quantify impact e.g., 'Improved threat detection speed by X%')."
+                    data-lang-en="Designed and implemented an Azure-based Security Information and Event Management (SIEM) solution with live map integration. This involved configuring Azure Virtual Machines to collect security logs and visualizing global login attempts for real-time threat detection and analysis."
+                    data-lang-fr="A conçu et mis en œuvre une solution SIEM basée sur Azure avec intégration de carte en direct. Ce projet impliquait la configuration de machines virtuelles Azure pour collecter les journaux de sécurité et visualiser les tentatives de connexion mondiales.">
                     Designed and implemented an Azure-based Security Information and Event Management (SIEM) solution
                     with
                     live map integration. This involved configuring Azure Virtual Machines to collect security logs
@@ -855,17 +531,20 @@
                 <div class="flex flex-wrap gap-2 mb-4">
                     <span class="skill-item bg-gray-200">Azure</span>
                     <span class="skill-item bg-gray-200">SIEM</span>
-                    <span class="skill-item bg-gray-200">Log Analytics</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Log Analytics"
+                        data-lang-fr="Analyse des Journaux">Log Analytics</span>
                     <span class="skill-item bg-gray-200">PowerShell</span>
-                    <span class="skill-item bg-gray-200">Threat Detection</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Threat Detection"
+                        data-lang-fr="Détection de Menaces">Threat Detection</span>
                 </div>
                 <a href="pdfs/Azure SIEM 471.pdf" target="_blank" rel="noopener noreferrer"
                     class="project-link mt-2 block">
-                    View Full Report (PDF) &rarr;
+                    <span data-lang-en="View Full Report (PDF)" data-lang-fr="Voir le Rapport Complet (PDF)">View Full
+                        Report (PDF)</span> &rarr;
                 </a>
                 <button onclick="expandProjectDescription(this, 'project-azure-siem')"
                     class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
-                    ✨ Expand Description
+                    <span data-lang-en="✨ Expand Description" data-lang-fr="✨ Voir Plus">✨ Expand Description</span>
                 </button>
                 <div id="project-azure-siem-loading" class="loading-spinner mx-auto mt-4"></div>
                 <div id="project-azure-siem-expanded-content"
@@ -873,10 +552,15 @@
             </div>
 
             <div class="card" id="project-network">
-                <h3 class="text-2xl font-semibold mb-2">Open Source Network Security Implementation and Testing</h3>
-                <p class="text-gray-700 mb-2 text-md">Fall 2023</p>
+                <h3 class="text-2xl font-semibold mb-2"
+                    data-lang-en="Open Source Network Security Implementation and Testing"
+                    data-lang-fr="Implémentation et Test de Sécurité Réseau Open Source">Open Source Network Security
+                    Implementation and Testing</h3>
+                <p class="text-gray-700 mb-2 text-md" data-lang-en="Fall 2023" data-lang-fr="Automne 2023">Fall 2023</p>
                 <p class="text-md leading-relaxed mb-4"
-                    data-original-description="Designed and implemented a secure network infrastructure using open-source hardware (Raspberry Pi, Vault Firewall) and software (pfSense, OpenVAS, Metasploit). Conducted rigorous penetration testing for each zone, simulating real intrusion attacks (DDoS, phishing, etc.), showcasing practical cybersecurity and network defense strategies. (Quantify comprehensiveness e.g., 'Identified X vulnerabilities').">
+                    data-original-description="Designed and implemented a secure network infrastructure using open-source hardware (Raspberry Pi, Vault Firewall) and software (pfSense, OpenVAS, Metasploit). Conducted rigorous penetration testing for each zone, simulating real intrusion attacks (DDoS, phishing, etc.), showcasing practical cybersecurity and network defense strategies. (Quantify comprehensiveness e.g., 'Identified X vulnerabilities')."
+                    data-lang-en="Designed and implemented a secure network infrastructure using open-source hardware (Raspberry Pi, Vault Firewall) and software (pfSense, OpenVAS, Metasploit). Conducted rigorous penetration testing for each zone, simulating real intrusion attacks (DDoS, phishing, etc.)."
+                    data-lang-fr="A conçu et mis en œuvre une infrastructure réseau sécurisée à l'aide de matériel (Raspberry Pi, pare-feu Vault) et de logiciels (pfSense, OpenVAS, Metasploit) open source. A effectué des tests d'intrusion rigoureux pour chaque zone.">
                     Designed and implemented a secure network infrastructure using open-source hardware (Raspberry Pi,
                     Vault
                     Firewall) and software (pfSense, OpenVAS, Metasploit). Conducted rigorous penetration testing for
@@ -888,12 +572,14 @@
                     <span class="skill-item bg-gray-200">OpenVAS</span>
                     <span class="skill-item bg-gray-200">Metasploit</span>
                     <span class="skill-item bg-gray-200">Raspberry Pi</span>
-                    <span class="skill-item bg-gray-200">Network Architecture</span>
-                    <span class="skill-item bg-gray-200">Penetration Testing</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Network Architecture"
+                        data-lang-fr="Architecture Réseau">Network Architecture</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Penetration Testing"
+                        data-lang-fr="Tests d'Intrusion">Penetration Testing</span>
                 </div>
                 <button onclick="expandProjectDescription(this, 'project-network')"
                     class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
-                    ✨ Expand Description
+                    <span data-lang-en="✨ Expand Description" data-lang-fr="✨ Voir Plus">✨ Expand Description</span>
                 </button>
                 <div id="project-network-loading" class="loading-spinner mx-auto mt-4"></div>
                 <div id="project-network-expanded-content"
@@ -901,10 +587,16 @@
             </div>
 
             <div class="card" id="project-facialrec">
-                <h3 class="text-2xl font-semibold mb-2">Raspberry Pi Facial Recognition with Real-time Alerts</h3>
-                <p class="text-gray-700 mb-2 text-md">Spring 2023</p>
+                <h3 class="text-2xl font-semibold mb-2"
+                    data-lang-en="Raspberry Pi Facial Recognition with Real-time Alerts"
+                    data-lang-fr="Reconnaissance Faciale sur Raspberry Pi avec Alertes en Temps Réel">Raspberry Pi
+                    Facial Recognition with Real-time Alerts</h3>
+                <p class="text-gray-700 mb-2 text-md" data-lang-en="Spring 2023" data-lang-fr="Printemps 2023">Spring
+                    2023</p>
                 <p class="text-md leading-relaxed mb-4"
-                    data-original-description="Developed a Facial Recognition System using Python, OpenCV, and SendGrid on a Raspberry Pi 4 for real-time visitor recognition. Integrated SendGrid for email notifications upon motion/face detection, enhancing intrusion detection capabilities and exploring the ethical considerations of face recognition technology. (Quantify detection rate or alert speed).">
+                    data-original-description="Developed a Facial Recognition System using Python, OpenCV, and SendGrid on a Raspberry Pi 4 for real-time visitor recognition. Integrated SendGrid for email notifications upon motion/face detection, enhancing intrusion detection capabilities and exploring the ethical considerations of face recognition technology. (Quantify detection rate or alert speed)."
+                    data-lang-en="Developed a Facial Recognition System using Python, OpenCV, and SendGrid on a Raspberry Pi 4 for real-time visitor recognition. Integrated SendGrid for email notifications upon motion/face detection, enhancing intrusion detection capabilities."
+                    data-lang-fr="A développé un système de reconnaissance faciale utilisant Python, OpenCV et SendGrid sur un Raspberry Pi 4 pour la reconnaissance des visiteurs en temps réel. A intégré SendGrid pour les notifications par e-mail lors de la détection.">
                     Developed a Facial Recognition System using Python, OpenCV, and SendGrid on a Raspberry Pi 4 for
                     real-time
                     visitor recognition. Integrated SendGrid for email notifications upon motion/face detection,
@@ -915,16 +607,19 @@
                     <span class="skill-item bg-gray-200">OpenCV</span>
                     <span class="skill-item bg-gray-200">SendGrid</span>
                     <span class="skill-item bg-gray-200">Raspberry Pi</span>
-                    <span class="skill-item bg-gray-200">Machine Learning</span>
-                    <span class="skill-item bg-gray-200">Computer Vision</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Machine Learning"
+                        data-lang-fr="Apprentissage Automatique">Machine Learning</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Computer Vision"
+                        data-lang-fr="Vision par Ordinateur">Computer Vision</span>
                 </div>
                 <a href="pdfs/Rapsberry Pi Facial Intrusion System Executive Summary.pdf" target="_blank"
                     rel="noopener noreferrer" class="project-link mt-2 block">
-                    View Full Report (PDF) &rarr;
+                    <span data-lang-en="View Full Report (PDF)" data-lang-fr="Voir le Rapport Complet (PDF)">View Full
+                        Report (PDF)</span> &rarr;
                 </a>
                 <button onclick="expandProjectDescription(this, 'project-facialrec')"
                     class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
-                    ✨ Expand Description
+                    <span data-lang-en="✨ Expand Description" data-lang-fr="✨ Voir Plus">✨ Expand Description</span>
                 </button>
                 <div id="project-facialrec-loading" class="loading-spinner mx-auto mt-4"></div>
                 <div id="project-facialrec-expanded-content"
@@ -932,10 +627,14 @@
             </div>
 
             <div class="card" id="project-rpi-wifi-vpn">
-                <h3 class="text-2xl font-semibold mb-2">Raspberry Pi Router: Wi-Fi & VPN</h3>
-                <p class="text-gray-700 mb-2 text-md">Year not specified, but practical project</p>
+                <h3 class="text-2xl font-semibold mb-2" data-lang-en="Raspberry Pi Router: Wi-Fi & VPN"
+                    data-lang-fr="Routeur Raspberry Pi : Wi-Fi & VPN">Raspberry Pi Router: Wi-Fi & VPN</h3>
+                <p class="text-gray-700 mb-2 text-md" data-lang-en="Year not specified, but practical project"
+                    data-lang-fr="2024">Spring 2024</p>
                 <p class="text-md leading-relaxed mb-4"
-                    data-original-description="Configured a Raspberry Pi 4 as a secure Wi-Fi router with an integrated VPN (WireGuard) and hotspot capabilities. This project aimed to enhance public Wi-Fi security by providing a double-encrypted internet connection, ensuring secure and private browsing for connected devices, showcasing practical network engineering and security implementation. (Quantify security improvements or speed).">
+                    data-original-description="Configured a Raspberry Pi 4 as a secure Wi-Fi router with an integrated VPN (WireGuard) and hotspot capabilities. This project aimed to enhance public Wi-Fi security by providing a double-encrypted internet connection, ensuring secure and private browsing for connected devices, showcasing practical network engineering and security implementation. (Quantify security improvements or speed)."
+                    data-lang-en="Configured a Raspberry Pi 4 as a secure Wi-Fi router with an integrated VPN (WireGuard) and hotspot capabilities. This project aimed to enhance public Wi-Fi security by providing a double-encrypted internet connection."
+                    data-lang-fr="A configuré un Raspberry Pi 4 comme un routeur Wi-Fi sécurisé avec un VPN (WireGuard) intégré et des capacités de point d'accès pour améliorer la sécurité du Wi-Fi public.">
                     Configured a Raspberry Pi 4 as a secure Wi-Fi router with an integrated VPN (WireGuard) and hotspot
                     capabilities.
                     This project aimed to enhance public Wi-Fi security by providing a double-encrypted internet
@@ -944,16 +643,18 @@
                 <div class="flex flex-wrap gap-2 mb-4">
                     <span class="skill-item bg-gray-200">Raspberry Pi</span>
                     <span class="skill-item bg-gray-200">WireGuard VPN</span>
-                    <span class="skill-item bg-gray-200">Network Configuration</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Network Configuration"
+                        data-lang-fr="Configuration Réseau">Network Configuration</span>
                     <span class="skill-item bg-gray-200">Linux</span>
                 </div>
                 <a href="pdfs/Raspberry Pi Router_ Wi-Fi & VPN .pdf" target="_blank" rel="noopener noreferrer"
                     class="project-link mt-2 block">
-                    View Full Report (PDF) &rarr;
+                    <span data-lang-en="View Full Report (PDF)" data-lang-fr="Voir le Rapport Complet (PDF)">View Full
+                        Report (PDF)</span> &rarr;
                 </a>
                 <button onclick="expandProjectDescription(this, 'project-rpi-wifi-vpn')"
                     class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
-                    ✨ Expand Description
+                    <span data-lang-en="✨ Expand Description" data-lang-fr="✨ Voir Plus">✨ Expand Description</span>
                 </button>
                 <div id="project-rpi-wifi-vpn-loading" class="loading-spinner mx-auto mt-4"></div>
                 <div id="project-rpi-wifi-vpn-expanded-content"
@@ -961,28 +662,34 @@
             </div>
 
             <div class="card" id="project-android-analysis">
-                <h3 class="text-2xl font-semibold mb-2">Android Forensic Analysis</h3>
-                <p class="text-gray-700 mb-2 text-md">April 2023</p>
+                <h3 class="text-2xl font-semibold mb-2" data-lang-en="Android Forensic Analysis"
+                    data-lang-fr="Analyse Légale d'Android">Android Forensic Analysis</h3>
+                <p class="text-gray-700 mb-2 text-md" data-lang-en="April 2023" data-lang-fr="Avril 2023">April 2023</p>
                 <p class="text-md leading-relaxed mb-4"
-                    data-original-description="Conducted a detailed forensic analysis of an unrooted Android smartphone, successfully extracting data and recovering deleted files (recovered 11 deleted files) using specialized tools like Andriller, Photorec, and Scalpel. This project highlighted critical mobile forensics techniques, demonstrating the ability to retrieve valuable information from mobile devices even under limitations.">
+                    data-original-description="Conducted a detailed forensic analysis of an unrooted Android smartphone, successfully extracting data and recovering deleted files (recovered 11 deleted files) using specialized tools like Andriller, Photorec, and Scalpel. This project highlighted critical mobile forensics techniques, demonstrating the ability to retrieve valuable information from mobile devices even under limitations."
+                    data-lang-en="Conducted a detailed forensic analysis of an unrooted Android smartphone, successfully extracting data and recovering deleted files using specialized tools like Andriller, Photorec, and Scalpel."
+                    data-lang-fr="A mené une analyse légale détaillée d'un smartphone Android non rooté, extrayant avec succès des données et récupérant des fichiers supprimés à l'aide d'outils spécialisés comme Andriller, Photorec et Scalpel.">
                     Conducted a detailed forensic analysis of an unrooted Android smartphone, successfully extracting
                     data
                     and recovering deleted files using specialized tools like Andriller, Photorec, and Scalpel.
                 </p>
                 <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="skill-item bg-gray-200">Mobile Forensics</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Mobile Forensics"
+                        data-lang-fr="Analyse Légale Mobile">Mobile Forensics</span>
                     <span class="skill-item bg-gray-200">Andriller</span>
                     <span class="skill-item bg-gray-200">Photorec</span>
                     <span class="skill-item bg-gray-200">Scalpel</span>
-                    <span class="skill-item bg-gray-200">Data Recovery</span>
+                    <span class="skill-item bg-gray-200" data-lang-en="Data Recovery"
+                        data-lang-fr="Récupération de Données">Data Recovery</span>
                 </div>
                 <a href="pdfs/Android Analysis.pdf" target="_blank" rel="noopener noreferrer"
                     class="project-link mt-2 block">
-                    View Full Report (PDF) &rarr;
+                    <span data-lang-en="View Full Report (PDF)" data-lang-fr="Voir le Rapport Complet (PDF)">View Full
+                        Report (PDF)</span> &rarr;
                 </a>
                 <button onclick="expandProjectDescription(this, 'project-android-analysis')"
                     class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
-                    ✨ Expand Description
+                    <span data-lang-en="✨ Expand Description" data-lang-fr="✨ Voir Plus">✨ Expand Description</span>
                 </button>
                 <div id="project-android-analysis-loading" class="loading-spinner mx-auto mt-4"></div>
                 <div id="project-android-analysis-expanded-content"
@@ -992,269 +699,195 @@
 
         <!-- Experience Section -->
         <section id="experience" class="mb-16">
-            <h2 class="section-title">Experience</h2>
+            <h2 class="section-title" data-lang-en="Experience" data-lang-fr="Expérience">Experience</h2>
 
             <div class="card">
-                <h3 class="text-2xl font-semibold mb-2">Web Verse - Founder & Lead Developer</h3>
-                <p class="text-gray-700 mb-2 text-md">Apr. 2024 - Present</p>
+                <h3 class="text-2xl font-semibold mb-2" data-lang-en="Web Verse - Founder & Lead Developer"
+                    data-lang-fr="Web Verse - Fondateur & Développeur Principal">Web Verse - Founder & Lead Developer
+                </h3>
+                <p class="text-gray-700 mb-2 text-md" data-lang-en="Apr. 2024 - Present"
+                    data-lang-fr="Avr. 2024 - Présent">Apr. 2024 - Present</p>
                 <ul class="list-disc list-inside text-md leading-relaxed space-y-1">
-                    <li>Designed and launched custom websites and applications for small businesses and non-profits,
-                        enhancing their digital presence and operational efficiency.</li>
-                    <li>Delivered affordable, impactful digital solutions, particularly catering to Spanish and
-                        French-speaking populations, leveraging multilingual skills for effective collaboration and
-                        increased visibility.</li>
-                    <li>Applied principles of modular architecture and CI/CD pipelines to ensure maintainability and
-                        scalability of developed web services.</li>
+                    <li data-lang-en="Designed and launched custom websites and applications for small businesses and non-profits, enhancing their digital presence and operational efficiency."
+                        data-lang-fr="Conception et lancement de sites web et d'applications personnalisés pour les petites entreprises et les organisations à but non lucratif, améliorant leur présence numérique et leur efficacité opérationnelle.">
+                        Designed and launched custom <span class="highlight">websites and applications</span> for small
+                        businesses and non-profits, enhancing their <span class="highlight">digital presence</span> and
+                        <span class="highlight">operational efficiency</span>.</li>
+                    <li data-lang-en="Delivered affordable, impactful digital solutions, particularly catering to Spanish and French-speaking populations, leveraging multilingual skills for effective collaboration and increased visibility."
+                        data-lang-fr="Fourniture de solutions numériques abordables et percutantes, s'adressant particulièrement aux populations hispanophones et francophones, en tirant parti des compétences multilingues pour une collaboration efficace et une visibilité accrue.">
+                        Delivered affordable, impactful digital solutions, particularly catering to Spanish and
+                        French-speaking populations, leveraging <span class="highlight">multilingual skills</span> for
+                        effective collaboration and increased visibility.</li>
+                    <li data-lang-en="Applied principles of modular architecture and CI/CD pipelines to ensure maintainability and scalability of developed web services."
+                        data-lang-fr="Application des principes de l'architecture modulaire et des pipelines CI/CD pour assurer la maintenabilité et l'évolutivité des services web développés.">
+                        Applied principles of <span class="highlight">modular architecture</span> and <span
+                            class="highlight">CI/CD pipelines</span> to ensure <span
+                            class="highlight">maintainability</span> and <span class="highlight">scalability</span> of
+                        developed web services.</li>
                 </ul>
             </div>
 
             <div class="card">
-                <h3 class="text-2xl font-semibold mb-2">Help Desk Intern</h3>
+                <h3 class="text-2xl font-semibold mb-2" data-lang-en="Help Desk Intern"
+                    data-lang-fr="Stagiaire au Centre d'Assistance">Help Desk Intern</h3>
                 <p class="text-gray-700 mb-1">IT Department, Guilford College</p>
-                <p class="text-gray-700 mb-2 text-md">Jan. 2024 - May 2025</p>
+                <p class="text-gray-700 mb-2 text-md" data-lang-en="Jan. 2024 - May 2025"
+                    data-lang-fr="Janv. 2024 - Mai 2025">Jan. 2024 - May 2025</p>
                 <ul class="list-disc list-inside text-md leading-relaxed space-y-1">
-                    <li>Managed and optimized IT infrastructure for a large academic environment supporting over 1,500
-                        active Google Workspace accounts.</li>
-                    <li>Led configuration and security optimization for multiple classroom computer labs, improving
-                        operational readiness by 25%.</li>
-                    <li>Resolved 100+ complex IT incidents using ITIL-aligned best practices.</li>
-                    <li>Managed Active Directory policies and oversaw end-user accounts using Google Admin and Windows
-                        Active Directory.</li>
-                    <li>Expertly reimaged and configured various technologies, including phones, Apple, and Windows
-                        operating systems.</li>
+                    <li data-lang-en="Managed and optimized IT infrastructure for a large academic environment supporting over 1,500 active Google Workspace accounts."
+                        data-lang-fr="Gestion et optimisation de l'infrastructure informatique pour un grand environnement universitaire prenant en charge plus de 1 500 comptes Google Workspace actifs.">
+                        Managed and <span class="highlight">optimized IT infrastructure</span> for a large academic
+                        environment supporting over 1,500 active <span class="highlight">Google Workspace
+                            accounts</span>.</li>
+                    <li data-lang-en="Led configuration and security optimization for multiple classroom computer labs, improving operational readiness by 25%."
+                        data-lang-fr="Direction de la configuration et de l'optimisation de la sécurité pour plusieurs laboratoires informatiques, améliorant la préparation opérationnelle de 25 %.">
+                        Led configuration and <span class="highlight">security optimization</span> for multiple
+                        classroom computer labs, improving <span class="highlight">operational readiness by 25%</span>.
+                    </li>
+                    <li data-lang-en="Resolved 100+ complex IT incidents using ITIL-aligned best practices."
+                        data-lang-fr="Résolution de plus de 100 incidents informatiques complexes en utilisant les meilleures pratiques alignées sur ITIL.">
+                        Resolved 100+ complex IT incidents using <span class="highlight">ITIL-aligned best
+                            practices</span>.</li>
+                    <li data-lang-en="Managed Active Directory policies and oversaw end-user accounts using Google Admin and Windows Active Directory."
+                        data-lang-fr="Gestion des stratégies Active Directory et supervision des comptes utilisateurs finaux à l'aide de Google Admin et de Windows Active Directory.">
+                        Managed <span class="highlight">Active Directory policies</span> and oversaw end-user accounts
+                        using <span class="highlight">Google Admin</span> and Windows Active Directory.</li>
+                    <li data-lang-en="Expertly reimaged and configured various technologies, including phones, Apple, and Windows operating systems."
+                        data-lang-fr="Réimagerie et configuration expertes de diverses technologies, y compris les téléphones, et les systèmes d'exploitation Apple et Windows.">
+                        Expertly <span class="highlight">reimaged and configured</span> various technologies, including
+                        phones, Apple, and Windows operating systems.</li>
                 </ul>
             </div>
 
             <div class="card">
-                <h3 class="text-2xl font-semibold mb-2">Tech Intern for Teen Court, Community Service, and Life Skills
+                <h3 class="text-2xl font-semibold mb-2"
+                    data-lang-en="Tech Intern for Teen Court, Community Service, and Life Skills Program"
+                    data-lang-fr="Stagiaire Technique pour le Tribunal pour Adolescents, le Service Communautaire et le Programme de Compétences de Vie">
+                    Tech Intern for Teen Court, Community Service, and Life Skills
                     Program</h3>
                 <p class="text-gray-700 mb-1">One Step Further</p>
-                <p class="text-gray-700 mb-2 text-md">May 2022 - July 2022</p>
+                <p class="text-gray-700 mb-2 text-md" data-lang-en="May 2022 - July 2022"
+                    data-lang-fr="Mai 2022 - Juil. 2022">May 2022 - July 2022</p>
                 <ul class="list-disc list-inside text-md leading-relaxed space-y-1">
-                    <li>Processed and organized client data using various technology tools, resulting in the accurate
-                        and secure storage of over 300 client records.</li>
-                    <li>Generated comprehensive reports and dashboards using Tableau and SQL software.</li>
-                    <li>Managed and maintained technology infrastructure to ensure seamless operations.</li>
-                    <li>Utilized language skills to translate documents and provide interpretation services for
-                        Spanish-speaking clients.</li>
+                    <li data-lang-en="Processed and organized client data using various technology tools, resulting in the accurate and secure storage of over 300 client records."
+                        data-lang-fr="Traitement et organisation des données des clients à l'aide de divers outils technologiques, aboutissant au stockage précis et sécurisé de plus de 300 dossiers clients.">
+                        Processed and organized client data using various technology tools, resulting in the <span
+                            class="highlight">accurate and secure storage</span> of over 300 client records.</li>
+                    <li data-lang-en="Generated comprehensive reports and dashboards using Tableau and SQL software."
+                        data-lang-fr="Génération de rapports et de tableaux de bord complets à l'aide des logiciels Tableau et SQL.">
+                        Generated comprehensive <span class="highlight">reports and dashboards</span> using <span
+                            class="highlight">Tableau</span> and <span class="highlight">SQL</span> software.</li>
+                    <li data-lang-en="Managed and maintained technology infrastructure to ensure seamless operations."
+                        data-lang-fr="Gestion et maintenance de l'infrastructure technologique pour assurer des opérations fluides.">
+                        Managed and maintained technology infrastructure to ensure seamless operations.</li>
+                    <li data-lang-en="Utilized language skills to translate documents and provide interpretation services for Spanish-speaking clients."
+                        data-lang-fr="Utilisation des compétences linguistiques pour traduire des documents et fournir des services d'interprétation aux clients hispanophones.">
+                        Utilized language skills to <span class="highlight">translate documents</span> and provide
+                        interpretation services for Spanish-speaking clients.</li>
                 </ul>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="max-w-xl mx-auto my-16 px-6">
-            <div class="card text-center">
-                <h2 class="section-title mb-6">Let's Connect!</h2>
-                <div class="flex flex-col items-center gap-4">
-                    <div class="flex items-center gap-2 text-gray-700">
-                        <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 20h5v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2h5" />
-                            <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" />
-                        </svg>
-                        <span class="font-medium">Based in Greensboro, NC</span>
-                    </div>
-                    <div class="flex items-center gap-2 text-gray-700">
-                        <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 12v1a4 4 0 01-8 0v-1" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 16v2m-6-2a6 6 0 0112 0v2H6v-2z" />
-                        </svg>
-                        <a href="mailto:perez122003@gmail.com" class="social-link">perez122003@gmail.com</a>
-                    </div>
-                    <div class="flex items-center gap-2 text-gray-700">
-                        
+
+        <!-- REVAMPED Contact Section -->
+        <section id="contact" class="bg-slate-100 py-16 sm:py-24 rounded-lg shadow-lg mb-16 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Left Column: Graphic -->
+                <div class="hidden md:block">
+                    <svg width="100%" viewBox="0 0 499 378" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_401_2)">
+                            <rect x="23.5" y="101.5" width="452" height="275" rx="14.5" fill="white" stroke="#94a3b8"
+                                stroke-width="3" />
+                            <rect x="23.5" y="101.5" width="452" height="42" fill="white" stroke="#94a3b8"
+                                stroke-width="3" />
+                            <circle cx="49" cy="122" r="6" fill="#f87171" />
+                            <circle cx="77" cy="122" r="6" fill="#fbbd23" />
+                            <circle cx="105" cy="122" r="6" fill="#34d399" />
+                            <path d="M57 186L93.5 220.5L130 186" stroke="#4f46e5" stroke-width="6"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M165 251L201.5 285.5L238 251" stroke="#3498db" stroke-width="6"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <rect x="57" y="247" width="236" height="10" rx="5" fill="#e2e8f0" />
+                            <rect x="57" y="271" width="168" height="10" rx="5" fill="#e2e8f0" />
+                            <path d="M370.5 151.5C369.5 166 382.5 186 370.5 186" stroke="#cbd5e1" stroke-width="3"
+                                stroke-linecap="round" />
+                            <path d="M362.5 185.5C361.5 198.5 373 221 362.5 221" stroke="#cbd5e1" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <rect x="340.5" y="221.5" width="81" height="81" rx="9.5" fill="white" stroke="#94a3b8"
+                                stroke-width="3" />
+                            <rect x="353" y="234" width="56" height="56" rx="5" fill="#f1f5f9" />
+                            <path d="M381 262C381 271.941 372.941 280 363 280" stroke="#3498db" stroke-width="5"
+                                stroke-linecap="round" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_401_2">
+                                <rect width="499" height="378" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+                <!-- Right Column: Form -->
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4"
+                        data-lang-en="Let's build the future, together."
+                        data-lang-fr="Construisons l'avenir, ensemble.">Let's build the future, together.</h2>
+                    <p class="text-lg text-gray-600 mb-8"
+                        data-lang-en="I'm currently available for freelance work and open to discussing new projects. Whether you have a question or just want to say hi, my inbox is always open."
+                        data-lang-fr="Je suis actuellement disponible pour des missions en freelance et ouvert à la discussion de nouveaux projets. Que vous ayez une question ou que vous vouliez simplement dire bonjour, ma boîte de réception est toujours ouverte.">
+                        I'm currently available for freelance work and open to discussing new projects. Whether you have
+                        a question or just want to say hi, my inbox is always open.</p>
+                    <form action="#" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="sr-only" data-lang-en="Your Name" data-lang-fr="Votre Nom">Your
+                                Name</label>
+                            <input type="text" name="name" id="name" autocomplete="name" class="contact-form-input"
+                                placeholder="Your Name" data-lang-en-placeholder="Your Name"
+                                data-lang-fr-placeholder="Votre Nom">
+                        </div>
+                        <div>
+                            <label for="email" class="sr-only" data-lang-en="Your Email" data-lang-fr="Votre Email">Your
+                                Email</label>
+                            <input type="email" name="email" id="email" autocomplete="email" class="contact-form-input"
+                                placeholder="Your Email" data-lang-en-placeholder="Your Email"
+                                data-lang-fr-placeholder="Votre Email">
+                        </div>
+                        <div>
+                            <label for="message" class="sr-only" data-lang-en="Your Message"
+                                data-lang-fr="Votre Message">Your Message</label>
+                            <textarea name="message" id="message" rows="4" class="contact-form-input"
+                                placeholder="Your Message" data-lang-en-placeholder="Your Message"
+                                data-lang-fr-placeholder="Votre Message"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                <span data-lang-en="Send Message" data-lang-fr="Envoyer le Message">Send Message</span>
+                            </button>
+                        </div>
+                    </form>
+                    <div
+                        class="mt-8 pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-gray-600">
+                        <a href="mailto:perez122003@gmail.com" class="social-link inline-flex items-center gap-2"><svg
+                                class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>perez122003@gmail.com</a>
                         <a href="https://www.linkedin.com/in/rogelioperezmontero/" target="_blank" rel="noopener"
-                            class="social-link flex items-center gap-1">
-                            <svg class="w-5 h-5 text-blue-700" fill="currentColor" viewBox="0 0 24 24">
+                            class="social-link inline-flex items-center gap-2"><svg class="w-5 h-5" fill="currentColor"
+                                viewBox="0 0 24 24">
                                 <path
                                     d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 10.29h-3v-4.5c0-1.07-.02-2.44-1.49-2.44-1.5 0-1.73 1.17-1.73 2.36v4.58h-3v-9h2.88v1.23h.04c.4-.75 1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 3.61 4.62v4.69z" />
-                            </svg>
-                            LinkedIn
-                        </a>
+                            </svg>LinkedIn</a>
                     </div>
-                </div>
-                <div class="mt-8 text-gray-600">
-                    <p>I'm always open to connect, collaborate, or chat about new opportunities.<br>
-                        Feel free to reach out!</p>
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer class="bg-gray-800 text-white text-center py-6 px-4 sm:px-6 lg:px-8">
         <p>&copy; 2025 Rogelio Perez Montero. All rights reserved.</p>
     </footer>
-
-    <!-- Scroll to top button -->
-    <button id="scrollTopButton" onclick="scrollToTop()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="lucide lucide-arrow-up">
-            <path d="m18 15-6-6-6 6" />
-        </svg>
-    </button>
-
-    <script>
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Scroll-to-top button logic
-        document.addEventListener('DOMContentLoaded', function () {
-            const scrollTopButton = document.getElementById("scrollTopButton");
-            const mobileNavToggle = document.getElementById('mobile-nav-toggle');
-            const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-            const hamburgerIcon = document.getElementById('hamburger-icon');
-            const closeIcon = document.getElementById('close-icon');
-            const body = document.body;
-
-            // Only attach onscroll if the button exists in the DOM
-            if (scrollTopButton) {
-                window.onscroll = function () {
-                    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                        scrollTopButton.classList.add("show");
-                    } else {
-                        scrollTopButton.classList.remove("show");
-                    }
-                };
-            } else {
-                console.warn("Scroll-to-top button element not found. Scroll functionality will not be active.");
-            }
-
-            // Mobile nav toggle logic
-            if (mobileNavToggle && mobileNavOverlay && hamburgerIcon && closeIcon) {
-                mobileNavToggle.addEventListener('click', function () {
-                    // Toggle overlay visibility
-                    mobileNavOverlay.classList.toggle('-translate-x-full');
-                    mobileNavOverlay.classList.toggle('translate-x-0');
-                    // Toggle icons
-                    hamburgerIcon.classList.toggle('hidden');
-                    closeIcon.classList.toggle('hidden');
-                    // Prevent background scroll
-                    body.classList.toggle('no-scroll');
-                });
-            }
-
-            // Function to close mobile nav, called by nav links and R.P.M. logo
-            window.closeMobileNav = function () {
-                mobileNavOverlay.classList.add('-translate-x-full');
-                mobileNavOverlay.classList.remove('translate-x-0');
-                hamburgerIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-                body.classList.remove('no-scroll');
-            };
-
-            // Close mobile nav if window is resized above mobile breakpoint while open
-            window.addEventListener('resize', function () {
-                if (window.innerWidth >= 768) { // md breakpoint in Tailwind is 768px
-                    if (!mobileNavOverlay.classList.contains('-translate-x-full')) {
-                        window.closeMobileNav();
-                    }
-                }
-            });
-        });
-
-        async function expandProjectDescription(buttonElement, elementId) {
-            const originalDescriptionElement = buttonElement.parentElement.querySelector('[data-original-description]');
-            const originalDescription = originalDescriptionElement ? originalDescriptionElement.dataset.originalDescription : '';
-            const loadingSpinner = document.getElementById(`${elementId}-loading`);
-            const expandedContentDiv = document.getElementById(`${elementId}-expanded-content`);
-
-            // Check if content is already expanded. If so, collapse it.
-            if (!expandedContentDiv.classList.contains('hidden') && expandedContentDiv.innerHTML !== '') {
-                expandedContentDiv.classList.add('hidden');
-                buttonElement.innerHTML = '✨ Expand Description';
-                return;
-            }
-
-            if (!originalDescription) {
-                expandedContentDiv.innerHTML = '<p class="text-red-500">Error: Original description not found.</p>';
-                expandedContentDiv.classList.remove('hidden');
-                return;
-            }
-
-            // Show loading spinner and update button text
-            loadingSpinner.style.display = 'block';
-            buttonElement.innerHTML = 'Generating...';
-            expandedContentDiv.classList.add('hidden'); // Ensure hidden while loading
-            expandedContentDiv.innerHTML = ''; // Clear previous content
-
-            try {
-                let chatHistory = [];
-                // Structured prompt to guide the LLM's output as JSON with concise strings
-                const prompt = `Generate a detailed project description for a professional portfolio in JSON format. The JSON should have the following keys: "title", "summary", "challenge", "solution", "impactAndAchievements".
-Each value should be a concise, engaging string (2-3 sentences max). Focus on high-level impact and technical highlights relevant to a recruiter. Do not use Markdown formatting within the string values.
-
-Here is the project: "${originalDescription}"`;
-
-                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-
-                const payload = {
-                    contents: chatHistory,
-                    generationConfig: {
-                        responseMimeType: "application/json",
-                        responseSchema: {
-                            type: "OBJECT",
-                            properties: {
-                                "title": { "type": "STRING" },
-                                "summary": { "type": "STRING" },
-                                "challenge": { "type": "STRING" },
-                                "solution": { "type": "STRING" },
-                                "impactAndAchievements": { "type": "STRING" }
-                            },
-                            "propertyOrdering": ["title", "summary", "challenge", "solution", "impactAndAchievements"]
-                        }
-                    }
-                };
-                const apiKey = "AIzaSyCLhEi5zgD82bdRjgE_Vr0FUGJ1Ku492mM"; // Replace with your actual API key
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(`API Error: ${response.status} ${response.statusText} - ${errorData.error.message}`);
-                }
-
-                const result = await response.json();
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const jsonText = result.candidates[0].content.parts[0].text;
-                    const parsedJson = JSON.parse(jsonText);
-
-                    let htmlContent = '';
-                    if (parsedJson.title) htmlContent += `<p><strong>Title:</strong> ${parsedJson.title}</p>`;
-                    if (parsedJson.summary) htmlContent += `<p><strong>Summary:</strong> ${parsedJson.summary}</p>`;
-                    if (parsedJson.challenge) htmlContent += `<p><strong>Challenge:</strong> ${parsedJson.challenge}</p>`;
-                    if (parsedJson.solution) htmlContent += `<p><strong>Solution:</strong> ${parsedJson.solution}</p>`;
-                    if (parsedJson.impactAndAchievements) htmlContent += `<p><strong>Impact and Achievements:</strong> ${parsedJson.impactAndAchievements}</p>`;
-
-                    expandedContentDiv.innerHTML = htmlContent;
-                    expandedContentDiv.classList.remove('hidden');
-                    buttonElement.innerHTML = 'Hide Description';
-                } else {
-                    expandedContentDiv.innerHTML = '<p class="text-red-500">Could not generate expanded description. Please try again.</p>';
-                    expandedContentDiv.classList.remove('hidden');
-                    buttonElement.innerHTML = '✨ Expand Description';
-                }
-            } catch (error) {
-                console.error("Error expanding description:", error);
-                expandedContentDiv.innerHTML = `<p class="text-red-500">Failed to expand description: ${error.message}. Please try again.</p>`;
-                expandedContentDiv.classList.remove('hidden');
-                buttonElement.innerHTML = '✨ Expand Description';
-            } finally {
-                loadingSpinner.style.display = 'none'; // Hide spinner regardless of success or failure
-            }
-        }
-    </script>
 </body>
 
 </html>
