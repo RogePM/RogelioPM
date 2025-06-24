@@ -1,3 +1,5 @@
+import { apiKey } from './apikey.js';
+
 /**
  * Scrolls the window to the top smoothly.
  */
@@ -145,7 +147,9 @@ async function callGemini(prompt, schema) {
       },
     };
     // IMPORTANT: The API key is an empty string. The execution environment will provide it.
-    const apiKey = "AIzaSyCLhEi5zgD82bdRjgE_Vr0FUGJ1Ku492mM";
+    // The API key is now loaded from a separate file not tracked by git.
+    // Create a file named 'apikey.js' with: export const apiKey = "YOUR_API_KEY";
+    // Make sure to add 'apikey.js' to your .gitignore!
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
     const response = await fetch(apiUrl, {
