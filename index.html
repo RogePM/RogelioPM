@@ -17,8 +17,8 @@
     <!-- link javascript -->
     <script src="script.js" defer></script>
     <!-- add logo for webpage -->
-    <link rel="icon" href="Robot.png" type="image/png"> 
-    
+    <link rel="icon" href="Robot.png" type="image/png">
+
 
 </head>
 
@@ -393,9 +393,9 @@
                     <span data-lang-en="View Published Paper (Jstor)" data-lang-fr="Voir l'Article Publié (Jstor)">View
                         Published Paper (Jstor)</span> &rarr;
                 </a>
-                <a href="https://foodbankapp.onrender.com/" class="project-link mt-2 block" target="_blank" rel="noopener noreferrer">
-                    <span data-lang-en="View Live Demo!"
-                        data-lang-fr="Voir la Démo!">View Live Demo!</span> &rarr;
+                <a href="https://foodbankapp.onrender.com/" class="project-link mt-2 block" target="_blank"
+                    rel="noopener noreferrer">
+                    <span data-lang-en="View Live Demo!" data-lang-fr="Voir la Démo!">View Live Demo!</span> &rarr;
                 </a>
                 <button onclick="expandProjectDescription(this, 'project-thesis')"
                     class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
@@ -578,8 +578,8 @@
                     <span class="skill-item bg-gray-200" data-lang-en="Penetration Testing"
                         data-lang-fr="Tests d'Intrusion">Penetration Testing</span>
                 </div>
-                <a href="pdfs/Defense in depth.pdf" target="_blank"
-                    rel="noopener noreferrer" class="project-link mt-2 block">
+                <a href="pdfs/Defense in depth.pdf" target="_blank" rel="noopener noreferrer"
+                    class="project-link mt-2 block">
                     <span data-lang-en="View Full Report (PDF)" data-lang-fr="Voir le Rapport Complet (PDF)">View Full
                         Report (PDF)</span> &rarr;
                 </a>
@@ -718,7 +718,8 @@
                         data-lang-fr="Conception et lancement de sites web et d'applications personnalisés pour les petites entreprises et les organisations à but non lucratif, améliorant leur présence numérique et leur efficacité opérationnelle.">
                         Designed and launched custom <span class="highlight">websites and applications</span> for small
                         businesses and non-profits, enhancing their <span class="highlight">digital presence</span> and
-                        <span class="highlight">operational efficiency</span>.</li>
+                        <span class="highlight">operational efficiency</span>.
+                    </li>
                     <li data-lang-en="Delivered affordable, impactful digital solutions, particularly catering to Spanish and French-speaking populations, leveraging multilingual skills for effective collaboration and increased visibility."
                         data-lang-fr="Fourniture de solutions numériques abordables et percutantes, s'adressant particulièrement aux populations hispanophones et francophones, en tirant parti des compétences multilingues pour une collaboration efficace et une visibilité accrue.">
                         Delivered affordable, impactful digital solutions, particularly catering to Spanish and
@@ -796,10 +797,13 @@
 
 
         <!-- REVAMPED Contact Section -->
-        <section id="contact" class="bg-slate-100 py-16 sm:py-24 rounded-lg shadow-lg mb-16 relative overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <section id="contact"
+            class="bg-gradient-to-br from-blue-50 to-indigo-100 py-12 sm:py-16 rounded-3xl shadow-2xl mb-20 overflow-hidden relative">
+            <div class="absolute inset-0 opacity-20 transform scale-150 rotate-12 bg-white pointer-events-none"></div>
+            <div
+                class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <!-- Left Column: Graphic -->
-                <div class="hidden md:block">
+                <div class="hidden md:block animate-fade-in-up delay-200">
                     <svg width="100%" viewBox="0 0 499 378" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_401_2)">
                             <rect x="23.5" y="101.5" width="452" height="275" rx="14.5" fill="white" stroke="#94a3b8"
@@ -832,63 +836,57 @@
                         </defs>
                     </svg>
                 </div>
-                <!-- Right Column: Form -->
-                <div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4"
-                        data-lang-en="Let's build the future, together."
-                        data-lang-fr="Construisons l'avenir, ensemble.">Let's build the future, together.</h2>
-                    <p class="text-lg text-gray-600 mb-8"
-                        data-lang-en="I'm currently available for freelance work and open to discussing new projects. Whether you have a question or just want to say hi, my inbox is always open."
-                        data-lang-fr="Je suis actuellement disponible pour des missions en freelance et ouvert à la discussion de nouveaux projets. Que vous ayez une question ou que vous vouliez simplement dire bonjour, ma boîte de réception est toujours ouverte.">
-                        I'm currently available for freelance work and open to discussing new projects. Whether you have
-                        a question or just want to say hi, my inbox is always open.</p>
-                    <form action="#" method="POST" class="space-y-6">
-                        <div>
-                            <label for="name" class="sr-only" data-lang-en="Your Name" data-lang-fr="Votre Nom">Your
-                                Name</label>
-                            <input type="text" name="name" id="name" autocomplete="name" class="contact-form-input"
-                                placeholder="Your Name" data-lang-en-placeholder="Your Name"
-                                data-lang-fr-placeholder="Votre Nom">
+                <!-- Right Column: Contact Info -->
+                <div class="text-center md:text-left animate-fade-in-up delay-300">
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4" data-lang-en="Let's Connect!"
+                        data-lang-fr="Connectons-Nous !">Let's Connect!</h2>
+                    <p class="text-xl text-gray-700 mb-6 leading-relaxed"
+                        data-lang-en="Feel free to reach out directly via email or connect with me on LinkedIn."
+                        data-lang-fr="N'hésitez pas à me contacter directement par e-mail ou à me trouver sur LinkedIn.">
+                        Feel free to reach out directly via email or connect with me on LinkedIn.
+                    </p>
+
+                    <div class="space-y-4 flex flex-col items-center md:items-start">
+                        <div class="contact-info-item group">
+                            <svg class="w-8 h-8 text-blue-600 group-hover:text-blue-800 transition-colors" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2h5" />
+                                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" />
+                            </svg>
+                            <span
+                                class="text-xl font-semibold text-gray-800 group-hover:text-blue-700 transition-colors"
+                                data-lang-en="Greensboro, NC, USA" data-lang-fr="Greensboro, NC, États-Unis">Greensboro,
+                                NC, USA</span>
                         </div>
-                        <div>
-                            <label for="email" class="sr-only" data-lang-en="Your Email" data-lang-fr="Votre Email">Your
-                                Email</label>
-                            <input type="email" name="email" id="email" autocomplete="email" class="contact-form-input"
-                                placeholder="Your Email" data-lang-en-placeholder="Your Email"
-                                data-lang-fr-placeholder="Votre Email">
-                        </div>
-                        <div>
-                            <label for="message" class="sr-only" data-lang-en="Your Message"
-                                data-lang-fr="Votre Message">Your Message</label>
-                            <textarea name="message" id="message" rows="4" class="contact-form-input"
-                                placeholder="Your Message" data-lang-en-placeholder="Your Message"
-                                data-lang-fr-placeholder="Votre Message"></textarea>
-                        </div>
-                        <div>
-                            <button type="submit"
-                                class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                <span data-lang-en="Send Message" data-lang-fr="Envoyer le Message">Send Message</span>
-                            </button>
-                        </div>
-                    </form>
-                    <div
-                        class="mt-8 pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-gray-600">
-                        <a href="mailto:perez122003@gmail.com" class="social-link inline-flex items-center gap-2"><svg
-                                class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                        <a href="mailto:perez122003@gmail.com" class="contact-info-item group">
+                            <svg class="w-8 h-8 text-blue-600 group-hover:text-blue-800 transition-colors" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
                                 </path>
-                            </svg>perez122003@gmail.com</a>
-                        <a href="https://www.linkedin.com/in/rogelioperezmontero/" target="_blank" rel="noopener"
-                            class="social-link inline-flex items-center gap-2"><svg class="w-5 h-5" fill="currentColor"
-                                viewBox="0 0 24 24">
+                            </svg>
+                            <span
+                                class="text-xl font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">perez122003@gmail.com</span>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/rogelioperezmontero/" target="_blank"
+                            rel="noopener noreferrer" class="contact-info-item group">
+                            <svg class="w-8 h-8 text-blue-600 group-hover:text-blue-800 transition-colors"
+                                fill="currentColor" viewBox="0 0 24 24">
                                 <path
                                     d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 10.29h-3v-4.5c0-1.07-.02-2.44-1.49-2.44-1.5 0-1.73 1.17-1.73 2.36v4.58h-3v-9h2.88v1.23h.04c.4-.75 1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 3.61 4.62v4.69z" />
-                            </svg>LinkedIn</a>
+                            </svg>
+                            <span
+                                class="text-xl font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">LinkedIn
+                                Profile</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer class="bg-gray-800 text-white text-center py-6 px-4 sm:px-6 lg:px-8">
